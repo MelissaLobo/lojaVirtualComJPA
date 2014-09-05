@@ -175,6 +175,5 @@ public class Loja {
 //		
 //	}
 	
-	//“O pacto que todo casal deveria fazer: ‘Quando eu achar que o amor está acabando, prometo me lembrar dos motivos que me fizeram te amar um dia."
-
+	
 }

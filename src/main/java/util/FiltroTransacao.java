@@ -32,6 +32,8 @@ public class FiltroTransacao implements Filter {
 			EntityLocal.currentEntityManager.get().getTransaction().commit();
 
 			System.out.println("filtro de transacao depois");
+			
+			EntityLocal.currentEntityManager.get().close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			EntityLocal.currentEntityManager.get().getTransaction().rollback();

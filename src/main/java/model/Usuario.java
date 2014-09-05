@@ -24,9 +24,6 @@ public class Usuario {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_usuario")
 	private List<Produto> produtos;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	private Carrinho carrinho;
 
 	public Usuario() {
 
@@ -83,15 +80,6 @@ public class Usuario {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
-	}
-
-	
-	public Carrinho getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(Carrinho carrinho) {
-		this.carrinho = carrinho;
 	}
 
 	@Override
