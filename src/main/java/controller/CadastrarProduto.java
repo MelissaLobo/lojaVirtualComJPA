@@ -41,7 +41,7 @@ public class CadastrarProduto extends HttpServlet {
 				loja.novoProduto(nome, valor, descricao, marca, categoria,
 						usuario);
 
-				direcionaParaHtml(req, resp, "/listaDeProdutos.jsp");
+				direcionaParaHtml(req, resp, "/home");
 
 			} else {
 				req.setAttribute("erro", "usuario ou senha invalida");

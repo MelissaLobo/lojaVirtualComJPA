@@ -31,10 +31,9 @@ public class AddProdutoNoCarrinhoDeCompra extends HttpServlet {
 				req.getSession().setAttribute("usuarioLogado", usuario);
 				
 			Long id = Long.parseLong(req.getParameter("idDoproduto"));
-
 			
 			Loja loja = new Loja();
-			loja.adicionarProdutoAoCarrinho(id, usuario);
+			loja.adicionarProdutoAoCarrinho(usuario, id);
 
 			resp.sendRedirect("mostraProduto?idDoProduto=" + id);
 			} else {

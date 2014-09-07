@@ -14,11 +14,12 @@ public class Carrinho {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-	
+
+	private Produto produto;
 
 	public Long getId() {
 		return id;
@@ -35,5 +36,14 @@ public class Carrinho {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+	
 	
 }

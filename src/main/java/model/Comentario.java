@@ -14,6 +14,15 @@ public class Comentario {
 	private String nome;
 	private String texto;
 	
+	public Comentario() {
+
+	}
+
+	public Comentario(String nome, String texto) {
+		this.nome = nome;
+		this.texto = texto;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

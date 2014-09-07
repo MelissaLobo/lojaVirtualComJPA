@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Loja;
 import model.Usuario;
 
 @SuppressWarnings("serial")
@@ -31,7 +30,7 @@ public class Comprar extends HttpServlet {
 //				Loja loja = new Loja();
 //				loja.removerProdutoDoCarrinho(usuario);
 
-				direcionaParaHtml(req, resp, "/compra.jsp");
+				direcionaParaHtml(req, resp, "lojaVirtual/compra.jsp");
 
 			} else {
 				req.setAttribute("erro", "usuario ou senha invalida");

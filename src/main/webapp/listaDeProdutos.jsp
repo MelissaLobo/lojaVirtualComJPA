@@ -35,7 +35,7 @@ a:hover {
 <body>
 	<div align="center">
 		<h2>
-			<a href="http://localhost:8080/lojaVirtual/index.jsp">Lobo Marinho</a>
+			<a href="http://localhost:8080/index.jsp">Lobo Marinho</a>
 		</h2>
 		
 	</div>
@@ -52,7 +52,8 @@ a:hover {
 						${produto.descricao}, - ${produto.marca}
 						<br /> Setor ${produto.categoria } <br /> 
 						<input type="submit" value="Adicionar no Carrinho de Compras"
-						onclick="location. href= 'http://localhost:8080/lojaVirtual/addProdutoNoCarrinhoDeCompra?idDoproduto=${produto.id}' ">
+						onclick="location. href= 'http://localhost:8080/addProdutoNoCarrinhoDeCompra?idDoproduto=${produto.id}' ">
+						<input type="submit" value="Comentarios" onclick="location. href= 'http://localhost:8080/mostraProduto?idDoProduto=${produto.id}' ">
 						<br />
 					</td>
 				</tr>
@@ -61,10 +62,10 @@ a:hover {
 	</c:if>
 
 	<div align="right">
-		<h4><a href="http://localhost:8080/lojaVirtual/carrinhoDeCompras">Carrinho de Compras</a></h4>
+		<h4><a href="http://localhost:8080/carrinhoDeCompras">Carrinho de Compras</a></h4>
 	</div>
 	<div align="center">
-		<a href="http://localhost:8080/lojaVirtual/index.jsp">Inicio</a>
+		<a href="http://localhost:8080/index.jsp">Inicio</a>
 	</div>
 </body>
 </html>

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Loja;
-import model.Usuario;
 
 @SuppressWarnings("serial")
 @WebServlet(urlPatterns = "/comentar")
@@ -24,12 +23,6 @@ public class Comentar extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 
 		try {
-			Usuario usuario = (Usuario) req.getSession().getAttribute(
-					"usuarioLogado");
-
-			
-			if (usuario != null) {
-				req.getSession().setAttribute("usuarioLogado", usuario);
 
 			String nome = req.getParameter("nome");
 			String texto = req.getParameter("texto");
@@ -40,11 +33,8 @@ public class Comentar extends HttpServlet {
 
 			resp.sendRedirect("mostraProduto?idDoProduto=" + id);
 
-			}else {
-				req.setAttribute("erro", "usuario ou senha invalida");
-				direcionaParaHtml(req, resp, "/login.jsp");
-			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			req.setAttribute("erro", e.getMessage());
 			direcionaParaHtml(req, resp, "erro.jsp");
 		}

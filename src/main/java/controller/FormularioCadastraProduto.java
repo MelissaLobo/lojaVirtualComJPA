@@ -22,7 +22,7 @@ public class FormularioCadastraProduto extends HttpServlet {
 
 		req.setAttribute("categorias", Categoria.values());
 
-		direcionaParaHtml(req, resp, "/cadastrarProduto.jsp");
+		direcionaParaHtml(req, resp, "lojaVirtual/cadastrarProduto.jsp");
 
 	}
 

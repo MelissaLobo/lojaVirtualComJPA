@@ -30,9 +30,9 @@ public class Home extends HttpServlet {
 
 				Loja loja = new Loja();
 
-				req.setAttribute("produtos", loja.listaTodos());
+				req.setAttribute("produtos", loja.listaDeProdutos(usuario));
 
-				direcionaParaHtml(req, resp, "/home.jsp");
+				direcionaParaHtml(req, resp, "lojaVirtual/home.jsp");
 			} else {
 				req.setAttribute("erro", "usuario ou senha invalida");
 				direcionaParaHtml(req, resp, "/login.jsp");

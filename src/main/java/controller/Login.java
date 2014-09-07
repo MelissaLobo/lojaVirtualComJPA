@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 
 			if (usuarioLogado != null) {
 				req.getSession().setAttribute("usuarioLogado", usuarioLogado);
-				resp.sendRedirect("home");
+				resp.sendRedirect("/home");
 			} else {
 				req.setAttribute("erro", "usuario ou senha invalida");
 				direcionaParaHtml(req, resp, "/login.jsp");

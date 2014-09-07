@@ -34,10 +34,9 @@ public class FiltroDeAcesso implements Filter {
 				"usuarioLogado");
 		if (usuario == null) {
 			direcionaParaHtml(req, resp, "/login.jsp");
-
-		}
+		}else{
 		chain.doFilter(request, response);
-
+		}
 	}
 
 	@Override

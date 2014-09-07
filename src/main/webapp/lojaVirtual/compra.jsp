@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Pagina de finalização de compra</title>
+
 <style> 
 body {background: linear-gradient(to right, #A9D0F5, #0B3861);}
 </style>
@@ -33,18 +34,23 @@ a:hover {
 </head>
 <body>
 
-<div align="center"><h3><a href="http://localhost:8080/index.jsp">Lobo Marinho</a></h3></div>
-
-	<c:if test="${not empty erro}"> ${erro}<br /></c:if>
+	<c:if test="${not empty usuarioLogado}">
+	Logado como ${usuarioLogado.email}<br />
+	</c:if>
 	
-	<h3>Login:</h3>
-	<form action="http://localhost:8080/login" method="POST">
-		Email:<input type="text" name="email" /> 
-		Senha:<input type="password" name="senha" /> 
-		<input type="submit" value="efetuar login" />
-	</form>
-	
+<div align="center"><h3><a href="http://localhost:8080/home">Lobo Marinho</a></h3></div>
 
-<div align="center"><a href="http://localhost:8080/cadastro.jsp">Cadastre-se</a></div>
+<h3>Compra efetuada com Sucesso!</h3>
+
+
+
+<div align="center"><a href="http://localhost:8080/home">Inicio</a></div>
+	<div align="right">
+		<form action="http://localhost:8080/deslogar" method="POST">
+			<input type="hidden" name="logout" value="Logout" /> 
+			<input type="submit" value="Deslogar" />
+		</form>
+	</div>
+
 </body>
 </html>

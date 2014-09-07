@@ -32,13 +32,13 @@ a:hover {
 </style>
 </head>
 <body>
-<div align="center"><h3><a href="http://localhost:8080/lojaVirtual/index.jsp">Lobo Marinho</a></h3></div>
+<div align="center"><h3><a href="http://localhost:8080/index.jsp">Lobo Marinho</a></h3></div>
 
 	<c:if test="${not empty erro}">
 			${erro}
 </c:if>
 
-<a href="http://localhost:8080/lojaVirtual/login.jsp">Faça seu login</a> ou
-<a href="http://localhost:8080/lojaVirtual/cadastro.jsp">Cadastre-se</a>
+<a href="http://localhost:8080/login.jsp">Faça seu login</a> ou
+<a href="http://localhost:8080/cadastro.jsp">Cadastre-se</a>
 </body>
 </html>

@@ -31,12 +31,10 @@ public class CarrinhoDeCompras extends HttpServlet {
 				Loja loja = new Loja();
 				loja.produtosDoCarrinhoDoUsuario(usuario);
 
-				req.setAttribute("produtosCarrinho",
-						loja.produtosDoCarrinhoDoUsuario(usuario));
-				req.setAttribute("total",
-						loja.somaDosProdutosDoCarrinho(usuario));
+				req.setAttribute("produtosCarrinho", loja.produtosDoCarrinhoDoUsuario(usuario));
+				req.setAttribute("total", loja.somaDosProdutosDoCarrinho(usuario));
 
-				direcionaParaHtml(req, resp, "/carrinhoDeCompras.jsp");
+				direcionaParaHtml(req, resp, "lojaVirtual/carrinhoDeCompras.jsp");
 
 			} else {
 				req.setAttribute("erro", "usuario ou senha invalida");
