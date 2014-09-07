@@ -22,18 +22,13 @@ public class Produto {
 	private String marca;
 	private Categoria categoria;
 	
+	public Long getId() {
+		return id;
+	}
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_produto")
 	private List<Comentario> comentarios;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "id_produto")
-	private List<Carrinho> carrinho;
-
-	public Long getId() {
-		return id;
-	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -86,13 +81,4 @@ public class Produto {
 		this.comentarios = comentarios;
 	}
 
-	public List<Carrinho> getCarrinho() {
-		return carrinho;
-	}
-
-	public void setCarrinho(List<Carrinho> carrinho) {
-		this.carrinho = carrinho;
-	}
-	
-	
 }

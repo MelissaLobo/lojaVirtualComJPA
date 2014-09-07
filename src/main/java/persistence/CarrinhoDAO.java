@@ -15,26 +15,14 @@ public class CarrinhoDAO extends DaoGenerico<Carrinho, Long>{
 	public List<Produto> listaProdutoDoCarrinho(Usuario usuario) {
 			
 			try {
-				Query query = entityManager.createQuery("from Carrinho carrinho");
-				return query.getResultList();
+				Query query = entityManager.createQuery("from Carrinho carrinho join fetch carrinho.produtos where carrinho = :carrinho");
+				query.setParameter("carrinho", usuario.getCarrinho());
+				Carrinho resultado = (Carrinho) query.getSingleResult();
+				return resultado.getProdutos();
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			return null;
 		}
-	
-	@SuppressWarnings("unchecked")
-	public List<Long> listaDeIdDosProdutos(Usuario usuario) {
-		
-		try {
-			Query query = entityManager.createQuery("from Carrinho carrinho where id_usuario=?");
-			return query.getResultList();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
 	}

@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -23,7 +24,11 @@ public class Usuario {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_usuario")
 	private List<Produto> produtos;
-
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "id_carrinho")
+	private Carrinho carrinho;
+	
 	public Usuario() {
 
 	}
@@ -41,6 +46,8 @@ public class Usuario {
 	}
 
 	
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -81,13 +88,29 @@ public class Usuario {
 		this.produtos = produtos;
 	}
 
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public String toString() {
+		return "  \n nome:" + nome + " \n email:" + email;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((carrinho == null) ? 0 : carrinho.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result
+				+ ((produtos == null) ? 0 : produtos.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		return result;
 	}
@@ -101,6 +124,11 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
+		if (carrinho == null) {
+			if (other.carrinho != null)
+				return false;
+		} else if (!carrinho.equals(other.carrinho))
+			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -116,6 +144,11 @@ public class Usuario {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (produtos == null) {
+			if (other.produtos != null)
+				return false;
+		} else if (!produtos.equals(other.produtos))
+			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
@@ -123,10 +156,6 @@ public class Usuario {
 			return false;
 		return true;
 	}
-
-	public String toString() {
-		return "  \n nome:" + nome + " \n email:" + email;
-	}
-
+	
 
 }

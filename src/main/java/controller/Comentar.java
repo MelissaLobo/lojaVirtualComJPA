@@ -31,7 +31,7 @@ public class Comentar extends HttpServlet {
 			Loja loja = new Loja();
 			loja.adicionarComentario(nome, texto, Integer.parseInt(id));
 
-			resp.sendRedirect("mostraProduto?idDoProduto=" + id);
+			resp.sendRedirect("mostraProdutoEComentario?idDoProduto=" + id);
 
 		} catch (Exception e) {
 			e.printStackTrace();

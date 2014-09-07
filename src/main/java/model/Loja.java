@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import persistence.CarrinhoDAO;
 import persistence.ComentarioDAO;
@@ -110,41 +111,58 @@ public class Loja {
 	public void adicionarProdutoAoCarrinho(Usuario usuario, Long idDoProduto) {
 		
 		long id = idDoProduto;
-		
-		Carrinho carrinho = new Carrinho();
-		Produto produtos = produtoDAO.find(id);
 				
-		produtos.getCarrinho().add(carrinho);
+		Usuario usuarioGerenciado = usuarioDAO.find(usuario.getId());
 		
-		produtoDAO.update(produtos);
-
+		Carrinho carrinho =null;
+		
+		if(usuarioGerenciado.getCarrinho()==null){
+			carrinho = new Carrinho();
+		}else{
+			carrinho = usuarioGerenciado.getCarrinho();
+		}
+		
+		Produto produtos = produtoDAO.find(id);
+		
+		if(carrinho.getProdutos()==null){
+			carrinho.setProdutos(new ArrayList<Produto>());
+		}
+		
+		carrinho.getProdutos().add(produtos);
+		
+		usuarioGerenciado.setCarrinho(carrinho);
+	//	carrinho.setUsuario(usuarioGerenciado);
+		
+		usuarioDAO.update(usuarioGerenciado);
+		//carrinhoDAO.update(carrinho);
 	}
 	
-	public List<Long> listaDeIdDosProdutosDoUsuario(Usuario usuario) {
-		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-		return carrinhoDAO.listaDeIdDosProdutos(usuario);
-	}
+	public List<Produto> buscaCarrinhoDeCompras(Usuario usuario) {
 
-	public List<Produto> produtosDoCarrinhoDoUsuario(Usuario usuario) {
-
-		List<Long> listaDeIdDosProdutosDoUsuario = listaDeIdDosProdutosDoUsuario(usuario);
-
-		List<Produto> listaDeProdutosDoUsuario = new ArrayList<Produto>();
-
-		for (Long produtoId : listaDeIdDosProdutosDoUsuario) {
-			listaDeProdutosDoUsuario.add(buscaProdutoPorID(produtoId));
-		}
-
+		List<Produto> listaDeProdutosDoUsuario = carrinhoDAO.listaProdutoDoCarrinho(usuario);
+		for (Produto produto : listaDeProdutosDoUsuario) {
+			produto.getId();
+			produto.getNome();
+			produto.getMarca();
+			produto.getDescricao();
+			produto.getCategoria();
+			produto.getValor();
+			for (Comentario coment : produto.getComentarios()) {
+				coment.getId();
+				coment.getNome();
+			}
+			return listaDeProdutosDoUsuario;
+		}		
 		int total = 0;
 		for (Produto item : listaDeProdutosDoUsuario) {
 			total = total + item.getValor();
-		}
-		return listaDeProdutosDoUsuario;
+		
 	}
-
+		return listaDeProdutosDoUsuario;
+}
 	
 	public int somaDosProdutosDoCarrinho(Usuario usuario) {
-		List<Produto> listaDeProdutosDoUsuario = produtosDoCarrinhoDoUsuario(usuario);
+		List<Produto> listaDeProdutosDoUsuario = buscaCarrinhoDeCompras(usuario);
 		int total = 0;
 		for (Produto item : listaDeProdutosDoUsuario) {
 			total = total + item.getValor();

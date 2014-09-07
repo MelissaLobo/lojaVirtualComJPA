@@ -29,9 +29,9 @@ public class CarrinhoDeCompras extends HttpServlet {
 				req.getSession().setAttribute("usuarioLogado", usuario);
 
 				Loja loja = new Loja();
-				loja.produtosDoCarrinhoDoUsuario(usuario);
+				loja.buscaCarrinhoDeCompras(usuario);
 
-				req.setAttribute("produtosCarrinho", loja.produtosDoCarrinhoDoUsuario(usuario));
+				req.setAttribute("produtosCarrinho", loja.buscaCarrinhoDeCompras(usuario));
 				req.setAttribute("total", loja.somaDosProdutosDoCarrinho(usuario));
 
 				direcionaParaHtml(req, resp, "lojaVirtual/carrinhoDeCompras.jsp");
