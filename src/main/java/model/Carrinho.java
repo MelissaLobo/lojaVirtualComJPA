@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Carrinho {
@@ -18,12 +17,7 @@ public class Carrinho {
 	private Long id;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name = "id_carrinho")
 	private List<Produto> produtos;
-
-//	@OneToOne
-//	private Usuario usuario;
-	
 	
 	public Long getId() {
 		return id;

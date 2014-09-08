@@ -131,10 +131,8 @@ public class Loja {
 		carrinho.getProdutos().add(produtos);
 		
 		usuarioGerenciado.setCarrinho(carrinho);
-	//	carrinho.setUsuario(usuarioGerenciado);
 		
 		usuarioDAO.update(usuarioGerenciado);
-		//carrinhoDAO.update(carrinho);
 	}
 	
 	public List<Produto> buscaCarrinhoDeCompras(Usuario usuario) {
@@ -170,11 +168,11 @@ public class Loja {
 		return total;
 	}
 
-//	public void removerProdutoDoCarrinho(Usuario usuario) {
-//		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-//		carrinhoDAO.removerProdutoDoCarrinhoDoUsuario(Usuario usuario);
-//		
-//	}
+	public void removerProdutoDoCarrinho(Usuario usuario) {
+		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
+		carrinhoDAO.removerProdutoDoCarrinhoDoUsuario(usuario);
+		
+	}
 	
 	
 }
