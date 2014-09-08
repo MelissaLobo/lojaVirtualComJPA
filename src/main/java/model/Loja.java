@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import persistence.CarrinhoDAO;
 import persistence.ComentarioDAO;
@@ -10,15 +9,15 @@ import persistence.ProdutoDAO;
 import persistence.UsuarioDAO;
 
 public class Loja {
-	
+
 	ProdutoDAO produtoDAO = new ProdutoDAO();
 	UsuarioDAO usuarioDAO = new UsuarioDAO();
 	CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-	
+
 	public List<Produto> listaDeProdutosPorUsuario(Usuario usuario) {
 		return produtoDAO.listaProdutoPorUsuario(usuario);
 	}
-	
+
 	public List<Produto> listaDeProdutos(Usuario usuario) {
 		List<Produto> listaTodos = produtoDAO.listaProdutoPorUsuario(usuario);
 
@@ -36,11 +35,11 @@ public class Loja {
 		}
 		return listaTodos;
 	}
-	
+
 	public List<Produto> listaTodos() {
 
 		List<Produto> listaTodos = produtoDAO.findAll();
-		
+
 		for (Produto produto : listaTodos) {
 			produto.getId();
 			produto.getNome();
@@ -61,16 +60,16 @@ public class Loja {
 			String marca, Categoria categoria, Usuario usuario) {
 
 		Usuario usuarioGerenciado = usuarioDAO.find(usuario.getId());
-		
+
 		Produto produto = new Produto();
 		produto.setNome(nome);
 		produto.setDescricao(descricao);
 		produto.setValor(valor);
 		produto.setMarca(marca);
 		produto.setCategoria(categoria);
-		
+
 		usuarioGerenciado.getProdutos().add(produto);
-		
+
 		usuarioDAO.update(usuarioGerenciado);
 
 	}
@@ -85,7 +84,7 @@ public class Loja {
 		produto.getComentarios().add(comentarios);
 
 		produtoDAO.update(produto);
-		
+
 	}
 
 	public Produto buscaProdutoPorID(Long id) {
@@ -98,9 +97,10 @@ public class Loja {
 
 		Produto produto = produtoDAO.find(id);
 
-		List<Comentario> comentariosDoProduto = comentarioDAO.listaComentarioPorProduto(produto);
+		List<Comentario> comentariosDoProduto = comentarioDAO
+				.listaComentarioPorProduto(produto);
 
-	    for (Comentario coment : comentariosDoProduto) {
+		for (Comentario coment : comentariosDoProduto) {
 			coment.getNome();
 			coment.getTexto();
 		}
@@ -109,35 +109,36 @@ public class Loja {
 	}
 
 	public void adicionarProdutoAoCarrinho(Usuario usuario, Long idDoProduto) {
-		
+
 		long id = idDoProduto;
-				
+
 		Usuario usuarioGerenciado = usuarioDAO.find(usuario.getId());
-		
-		Carrinho carrinho =null;
-		
-		if(usuarioGerenciado.getCarrinho()==null){
+
+		Carrinho carrinho = null;
+
+		if (usuarioGerenciado.getCarrinho() == null) {
 			carrinho = new Carrinho();
-		}else{
+		} else {
 			carrinho = usuarioGerenciado.getCarrinho();
 		}
-		
+
 		Produto produtos = produtoDAO.find(id);
-		
-		if(carrinho.getProdutos()==null){
+
+		if (carrinho.getProdutos() == null) {
 			carrinho.setProdutos(new ArrayList<Produto>());
 		}
-		
+
 		carrinho.getProdutos().add(produtos);
-		
+
 		usuarioGerenciado.setCarrinho(carrinho);
-		
+
 		usuarioDAO.update(usuarioGerenciado);
 	}
-	
+
 	public List<Produto> buscaCarrinhoDeCompras(Usuario usuario) {
 
-		List<Produto> listaDeProdutosDoUsuario = carrinhoDAO.listaProdutoDoCarrinho(usuario);
+		List<Produto> listaDeProdutosDoUsuario = carrinhoDAO
+				.listaProdutoDoCarrinho(usuario);
 		for (Produto produto : listaDeProdutosDoUsuario) {
 			produto.getId();
 			produto.getNome();
@@ -150,15 +151,15 @@ public class Loja {
 				coment.getNome();
 			}
 			return listaDeProdutosDoUsuario;
-		}		
+		}
 		int total = 0;
 		for (Produto item : listaDeProdutosDoUsuario) {
 			total = total + item.getValor();
-		
-	}
+
+		}
 		return listaDeProdutosDoUsuario;
-}
-	
+	}
+
 	public int somaDosProdutosDoCarrinho(Usuario usuario) {
 		List<Produto> listaDeProdutosDoUsuario = buscaCarrinhoDeCompras(usuario);
 		int total = 0;
@@ -171,8 +172,7 @@ public class Loja {
 	public void removerProdutoDoCarrinho(Usuario usuario) {
 		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
 		carrinhoDAO.removerProdutoDoCarrinhoDoUsuario(usuario);
-		
+
 	}
-	
-	
+
 }
