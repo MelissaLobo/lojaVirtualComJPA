@@ -169,10 +169,8 @@ public class Loja {
 		return total;
 	}
 
-	public void removerProdutoDoCarrinho(Usuario usuario) {
-		CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-		carrinhoDAO.removerProdutoDoCarrinhoDoUsuario(usuario);
-
+	public void removerCarrinhoDoUsuario(Usuario usuario) {
+		usuarioDAO.removerCarrinhoDoUsuario(usuario);
 	}
 
 }

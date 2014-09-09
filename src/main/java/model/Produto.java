@@ -25,7 +25,7 @@ public class Produto {
 	public Long getId() {
 		return id;
 	}
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name = "id_produto")
 	private List<Comentario> comentarios;
 	

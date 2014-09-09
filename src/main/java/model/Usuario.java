@@ -25,7 +25,7 @@ public class Usuario {
 	@JoinColumn(name = "id_usuario")
 	private List<Produto> produtos;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL,orphanRemoval=true)
 	@JoinColumn(name = "id_carrinho")
 	private Carrinho carrinho;
 	

@@ -20,6 +20,13 @@ public class UsuarioDAO extends DaoGenerico<Usuario, Long>{
 		}
 		return usuario;
 	}
+	
+	public void removerCarrinhoDoUsuario(Usuario usuario){
+		usuario = find(usuario.getId());
+		usuario.setCarrinho(null);
+		update(usuario);
+	}
+   
 }
 
 

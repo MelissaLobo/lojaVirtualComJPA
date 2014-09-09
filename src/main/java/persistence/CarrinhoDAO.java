@@ -24,16 +24,4 @@ public class CarrinhoDAO extends DaoGenerico<Carrinho, Long> {
 		}
 		return null;
 	}
-
-	public void removerProdutoDoCarrinhoDoUsuario(Usuario usuario) {
-
-		try {
-			Query query = entityManager
-					.createQuery("delete from Carrinho carrinho join carrinho.produtos where id = :id");
-			query.setParameter("id", usuario.getId());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

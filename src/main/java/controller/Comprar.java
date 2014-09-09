@@ -29,7 +29,7 @@ public class Comprar extends HttpServlet {
 				req.getSession().setAttribute("usuarioLogado", usuario);
 
 				Loja loja = new Loja();
-				loja.removerProdutoDoCarrinho(usuario);
+				loja.removerCarrinhoDoUsuario(usuario);
 
 				direcionaParaHtml(req, resp, "lojaVirtual/compra.jsp");
 
