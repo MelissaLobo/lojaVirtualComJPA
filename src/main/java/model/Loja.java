@@ -172,5 +172,4 @@ public class Loja {
 	public void removerCarrinhoDoUsuario(Usuario usuario) {
 		usuarioDAO.removerCarrinhoDoUsuario(usuario);
 	}
-
 }

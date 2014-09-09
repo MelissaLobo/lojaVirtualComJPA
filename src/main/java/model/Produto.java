@@ -21,14 +21,15 @@ public class Produto {
 	private String descricao;
 	private String marca;
 	private Categoria categoria;
-	
+
 	public Long getId() {
 		return id;
 	}
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "id_produto")
 	private List<Comentario> comentarios;
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}

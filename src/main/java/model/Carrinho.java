@@ -15,10 +15,10 @@ public class Carrinho {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Produto> produtos;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -34,14 +34,6 @@ public class Carrinho {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
-//
-//	public Usuario getUsuario() {
-//		return usuario;
-//	}
-//
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-//	}
 
 	@Override
 	public int hashCode() {
@@ -74,6 +66,4 @@ public class Carrinho {
 			return false;
 		return true;
 	}
-
-	
 }

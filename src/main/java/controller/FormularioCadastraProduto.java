@@ -25,5 +25,4 @@ public class FormularioCadastraProduto extends HttpServlet {
 		direcionaParaHtml(req, resp, "lojaVirtual/cadastrarProduto.jsp");
 
 	}
-
 }

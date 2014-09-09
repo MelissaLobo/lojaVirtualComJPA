@@ -53,5 +53,4 @@ public class CadastrarProduto extends HttpServlet {
 			direcionaParaHtml(req, resp, "erro.jsp");
 		}
 	}
-
 }

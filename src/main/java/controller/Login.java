@@ -40,7 +40,5 @@ public class Login extends HttpServlet {
 			req.setAttribute("erro", e.getMessage());
 			direcionaParaHtml(req, resp, "erro.jsp");
 		}
-
 	}
-
 }

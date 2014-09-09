@@ -47,7 +47,5 @@ public class MostraProduto extends HttpServlet {
 			req.setAttribute("erro", e.getMessage());
 			direcionaParaHtml(req, resp, "erro.jsp");
 		}
-
 	}
-
 }

@@ -22,25 +22,23 @@ public class MostraProdutoEComentario extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-			req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
 		try {
 
-				Long id = Long.parseLong(req.getParameter("idDoProduto"));
-				Loja loja = new Loja();
+			Long id = Long.parseLong(req.getParameter("idDoProduto"));
+			Loja loja = new Loja();
 
-				Produto produto = loja.buscaProdutoPorID(id);
-				List<Comentario> lista = loja.buscaComentariosDoProdutoPorID(id);
+			Produto produto = loja.buscaProdutoPorID(id);
+			List<Comentario> lista = loja.buscaComentariosDoProdutoPorID(id);
 
-				req.setAttribute("comentarios", lista);
-				req.setAttribute("produto", produto);
+			req.setAttribute("comentarios", lista);
+			req.setAttribute("produto", produto);
 
-				direcionaParaHtml(req, resp, "mostraProdutoEComentario.jsp");
+			direcionaParaHtml(req, resp, "mostraProdutoEComentario.jsp");
 
 		} catch (Exception e) {
 			req.setAttribute("erro", e.getMessage());
 			direcionaParaHtml(req, resp, "erro.jsp");
 		}
-
 	}
-
 }

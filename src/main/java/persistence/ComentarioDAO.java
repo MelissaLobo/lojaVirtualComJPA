@@ -13,13 +13,13 @@ public class ComentarioDAO extends DaoGenerico<Comentario, Long> {
 	public List<Comentario> listaComentarioPorProduto(Produto produto) {
 
 		try {
-			Query query = entityManager.createQuery("from Comentario comentario");
+			Query query = entityManager
+					.createQuery("from Comentario comentario");
 			return query.getResultList();
 
 		} catch (Exception e) {
-		   e.printStackTrace();
+			e.printStackTrace();
 		}
 		return null;
 	}
-
 }
